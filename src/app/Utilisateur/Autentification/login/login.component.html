@@ -1,0 +1,39 @@
+<br><br>
+<div class="container" id="container">
+
+  <div class="form-container sign-in-container">
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+      <h1>Connexion</h1>
+      <br><br>
+      <div class="form-group">
+
+        <input placeholder="Email"   type="email" value="abc" [(ngModel)]="email" formControlName="email" class="form-control" [ngClass]="{ 'is-invalid': submitted && f['email'].errors }"  />
+        <div *ngIf="submitted && f['email'].errors" class="invalid-feedback">
+          <div *ngIf="f['email'].errors['required']">champs email vide</div>
+          <div *ngIf="f['email'].errors['email']">invalide email</div>
+        </div>
+      </div>
+      <div class="form-group">
+
+        <input placeholder="Mot de Passe" type="password" [(ngModel)]="password"  formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': submitted && f['password'].errors }" />
+        <div *ngIf="submitted && f['password'].errors" class="invalid-feedback">
+          <div *ngIf="f['password'].errors['required']">champs mot de passe vide</div>
+          <div *ngIf="f['password'].errors['minlength']">minimum 6 caracteres</div>
+        </div>
+
+      </div>
+
+      <button>Se connecter</button>
+    </form>
+  </div>
+  <div class="overlay-container">
+    <div class="overlay">
+
+      <div class="overlay-panel overlay-right">
+        <h1>Bonjour !</h1>
+        <p>Si vous n'avez pas encore un compte veillez créer un .</p>
+        <button class="ghost" id="signUp" routerLink="/inscription">S'inscrire</button>
+      </div>
+    </div>
+  </div>
+</div>

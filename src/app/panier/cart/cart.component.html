@@ -1,0 +1,15 @@
+<header id="site-header">
+    <div class="container">
+      <h1>Donation cart</h1>
+    </div>
+  </header>
+
+  <div class="container">
+
+    <section id="cart"> 
+<app-cart-item *ngFor="let cartItem of cartItems$ | async"
+        [cartItem]="cartItem" (deleteItem)="OnDeleteItem($event)">
+    </app-cart-item>
+    </section>
+
+</div>

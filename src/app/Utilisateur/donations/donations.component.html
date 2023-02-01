@@ -1,0 +1,78 @@
+
+
+<div class="container" *ngIf="products">
+  <div class="card">
+    <div class="card-body">
+      <div class="row">
+        <div class="col-4">
+          <button (click)="addDonation()" class="btn btn-sm btn-success mx-2">Ajouter un don</button>
+          <button (click)="showDonation()" class="btn btn-sm btn-success">Afficher mes dons</button>
+        </div>
+        <div class="col-4">
+          <form #f="ngForm">
+            <div class="form-group">
+              <label >Recherche</label>
+              <input  class="form-control me-2" type="search" [(ngModel)]="word" placeholder="Chercher" name="word" (ngModelChange)="chercher()" aria-label="Search">
+            </div>
+          </form>
+        </div>
+        <!--<div class="col-4">
+          <form #f1="ngForm">
+            <div class="form-group">
+              <label for="id">Filtre par categorie</label>
+              <select  class="form-control" ngModel  name="id" id="id" >
+                <option value="">All</option>
+                <option value="{{option}}" *ngFor="let option of category" >{{option}}</option>
+              </select>
+            </div>
+          </form>
+        </div>-->
+      </div>
+      <h4 *ngIf="products " class="card-title my-3">Liste des dons</h4>
+      <div class="col-4" *ngIf="products">
+        <form #f1="ngForm">
+          <div class="form-group my-3">
+            <label for="id">Filtre par categorie</label>
+            <select  class="form-control" ngModel  name="id" id="id" (change)="filterCategory($event)">
+              <option value="all">All</option>
+              <option value="{{option.designation}}" *ngFor="let option of category" >{{option.designation}}</option>
+            </select>
+          </div>
+        </form>
+      </div>
+      <div class="row">
+        <table class="table table-hover" *ngIf="products">
+          <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">image</th>
+            <th scope="col">title</th>
+            <th scope="col">Description</th>
+            <th scope="col">Category</th>
+            <th colspan="2">Action</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let p of products">
+            <th scope="row">{{p.id}}</th>
+            <td><img src={{p.photo}} height="80px" width="80px" class="img-fluid rounded-circle" alt="img"> </td>
+
+            <td>{{p.nom}}</td>
+            <td>{{p.description}}</td>
+            <td>{{p.category.designation }}</td>
+            <td><a (click)="onEditProduct(p)"class="btn-info btn">edit</a></td>
+            <td><a (click)="onDeleteProduct(p.id)" class="btn-danger btn">delete</a></td>
+          </tr>
+          </tbody>
+        </table>
+     <!--  &lt;!&ndash; <ul *ngIf="pages" class="pagination">
+          <li *ngFor="let p of pages; let i=index" class="page-link " [ngClass]=" i == currentPage ? 'active' :''">
+            <a class="clickable" (click)="onProductPage(i)"> {{i}}</a>
+          </li>
+        </ul>&ndash;&gt;-->
+      </div>
+    </div>
+  </div>
+</div>
+
+

@@ -1,0 +1,10 @@
+
+<i class="bi bi-heart"></i>
+
+<div class="row">
+
+        <app-product-item *ngFor="let product of products$ | async"
+        [product]="product"
+        (addToCart)="addToCart($event)">
+    </app-product-item>
+</div>

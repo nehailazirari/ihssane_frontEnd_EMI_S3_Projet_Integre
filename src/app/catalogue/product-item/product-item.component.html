@@ -1,0 +1,23 @@
+<link href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css' rel='stylesheet'>
+<div class="card" style="width: 18rem;" >
+
+  <div routerLink="/catalogue/{{product.id}}">
+ <img src="{{product.image}}" class="card-img-top" alt="">
+    <div class="card-body">
+      <h5 class="card-title">{{product.title}}</h5>
+      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+
+    </div>
+    </div>
+
+  <div style="display: flex; justify-content: center; align-items: center;">
+    <button class="btn btn-primary"  routerLink="/panier" (click)="addToCartN($event)">ajouter Panier</button>
+    <a (click)="toggleFavorite()">
+      <i class="fa fa-heart" *ngIf="product.favorite" [ngStyle]="{'color': product.favorite ? 'darkred' : 'red' , 'margin-left': '30px' }"></i>
+      <i class="fa fa-heart" *ngIf="!product.favorite" [ngStyle]="{'margin-left': '40px' }"></i>
+    </a>
+
+  </div>
+
+
+</div>

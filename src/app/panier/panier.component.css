@@ -1,0 +1,16 @@
+.her {
+    background: #eee;
+    overflow-x: hidden;
+  }
+.msg{
+    width: 400px;
+    height: 100px;
+    position: absolute;
+    top: 100px;right: 40px;
+   
+   
+}
+.cart{
+    width: 600px;
+    height: 100px;
+}

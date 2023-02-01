@@ -1,0 +1,87 @@
+<!--<div class="container">
+  <p></p>
+  <div class="row">
+    <div class="col-6 offset-3">
+      <h4>Editing</h4>
+      <div class="card">
+        <div class="card-body" *ngIf="product">
+          <form #f="ngForm" (ngSubmit)="valider(f.value)">
+            <p>{{f.value.type}}</p>
+            <div class="form-group my-3 form-control-lg w-100">
+              <label for="title">Titre</label>
+              <textarea ngModel [(ngModel)]="product.title" placeholder="title" type="text" name="title" id="title" class="form-control form-control-lg my-3 w-100 " rows="3" style="white-space: normal; overflow-wrap: break-word;">
+              </textarea>
+            </div>
+            <div class="form-group my-3 form-control-lg w-100">
+              <label for="designation">Designation</label>
+              <textarea ngModel [(ngModel)]="product.description" placeholder="Designation" type="text" name="description" id="designation" class="form-control form-control-lg my-3 w-100 " rows="3" style="white-space: normal; overflow-wrap: break-word;">
+              </textarea>
+                </div>
+
+            <button class="btn btn-sm btn-primary my-3" >Valider</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>-->
+
+<div class="p-4">
+  <header class="d-flex justify-content-between align-items-center" >
+    <h1 class="m-0">Modifier Don</h1>
+
+  </header>
+  <form #f="ngForm" [formGroup]="tasksFilter">
+    <div class="row mt-3">
+      <div class="col-md-12">
+        <mat-form-field appearance="outline" class="w-100">
+          <mat-label>Title</mat-label>
+          <input matInput   placeholder="title" formControlName="title">
+        </mat-form-field>
+      </div>
+
+
+      <div class="col-md-12">
+        <mat-form-field appearance="outline" class="w-100">
+          <mat-label>Description</mat-label>
+          <textarea matInput   placeholder="task description ...."  formControlName="description"></textarea>
+        </mat-form-field>
+
+      </div>
+    </div>
+
+    <div class="col-4">
+      <div class="form-group my-3">
+        <mat-form-field  fieldappearance = "fill" >
+        <mat-label > Categorie </mat-label >
+
+      <select  matNativeControl  requis   (change)="filterCategory($event)"  formControlName="category">
+<!--        <option  value = "volvo" > Volvo </option >-->
+          <option value="{{option.designation}}" *ngFor="let option of category" value="{{option.id}}" >{{option.designation}}</option>
+
+       </select >
+
+      </mat-form-field >
+      </div>
+    </div>
+
+
+      <!--<div class="col-md-12">
+        <mat-form-field appearance="outline" class="w-100">
+          <mat-label>image</mat-label>
+          <input matInput   placeholder="image" formControlName="image">
+        </mat-form-field>
+      </div>-->
+
+
+  </form>
+
+  <footer class="tw-p-6">
+    <div class="d-flex justify-content-center align-items-center">
+      <button mat-flat-button class="btn btn-success py-1 px-5 mx-2"  (click)="update()">edit</button>
+
+      <button mat-flat-button matDialogClose class="btn btn-danger py-1 px-5">Close</button>
+    </div>
+
+  </footer>
+</div>
