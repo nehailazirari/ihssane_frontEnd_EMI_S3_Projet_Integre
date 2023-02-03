@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import {LocalStorageService} from "../../service/local-storage.service";
 import {AuthService} from "../../service/auth.service";
-import {User} from "../../model/user";
+import {User} from "../../model/User";
 import {Router} from "@angular/router";
 
 

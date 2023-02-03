@@ -1,3 +1,3 @@
 export enum EtatDemande {
-accepted = "accepte",refused = "refuse",encours="encours"
+    accepter = "accepter",refuser = "refuser",encours="encours"
 }

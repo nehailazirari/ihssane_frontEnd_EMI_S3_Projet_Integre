@@ -14,9 +14,8 @@ export class ProductItemComponent implements OnInit {
   idUder:number=this.authService.ConnectedUser().id
 
 
-  @Input()public product : Don = new Don(1,"Fjallr",109.95,"Your perfect pack for everyday use and walks in the forest. Stash your laptop (up to 15 inches) in the padded sleeve, your everyday","men's clothing","https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg");
-
-  @Output() public addToCart: EventEmitter<Don>;
+  @Input()public product! : Don;
+  @Output() public addToCart: EventEmitter<number>;
   constructor(private authService :AuthService) {
 
     this.addToCart = new EventEmitter();
@@ -61,8 +60,8 @@ export class ProductItemComponent implements OnInit {
 
 
   addToCartN(event : MouseEvent){
-    this.addToCart.emit(this.product);
-    console.log("shshshsh")
+    this.addToCart.emit(this.product.id);
+    
   }
 
 }

@@ -1,12 +1,61 @@
-<div class="card">
-    <header id="site-header">
-        <div class="container">
-          <h1>messagerie</h1>
-        </div>
+<div id="container"  >
+  <aside>
+    <header>
+      <input type="text" placeholder="search">
     </header>
-    <div class="card-body" >
-        <div class="ii">
-      <h5 class="card-title">Special title treatment</h5>
-      <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-     </div></div>
-  </div>
+    <ul>
+      <li *ngFor="let user of users" (click)="onClik(user.id)">
+        <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/1940306/chat_avatar_02.jpg" alt="">
+        <div>
+          <h2>{{user.nom+' '+user.prenom}}</h2>
+          <h3>
+            <span class="status green"></span>
+            online
+          </h3>
+        </div>
+      </li>
+    </ul>
+  </aside>
+  <main>
+    <header *ngIf="heaserUser">
+      <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/1940306/chat_avatar_02.jpg"alt="">
+      <div >
+        <h2>Chat with {{heaserUser.nom+' '+heaserUser.prenom}}</h2>
+        <h3>already {{messages.length}} messages</h3>
+      </div>
+      <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/1940306/ico_star.png" alt="">
+    </header >
+    <ul id="chat" >
+      <a *ngFor="let message of messages">
+      <li class="you" *ngIf="message.fromUser.id===autherId">
+        <div class="entete">
+          <span class="status green"></span>
+          <h2>{{message.fromUser.nom}}</h2>
+          <h3>10:12AM, Today</h3>
+        </div>
+        <div class="triangle"></div>
+        <div class="message">
+          {{message.message}}
+        </div>
+      </li>
+      <li class="me" *ngIf="message.fromUser.id===this.id">
+        <div class="entete">
+          <h3>10:12AM, Today</h3>
+          <h2>{{message.fromUser.nom}}</h2>
+          <span class="status blue"></span>
+        </div>
+        <div class="triangle"></div>
+        <div class="message">
+          {{message.message}}
+        </div>
+      </li>
+    </a>
+    </ul>
+    <footer>
+      <textarea placeholder="Type your message" [(ngModel)]="chine" name="chine"></textarea>
+      <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/1940306/ico_picture.png" alt="">
+      <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/1940306/ico_file.png" alt="">
+      <button (click)="onSend()" >Send</button>
+    </footer>
+  </main>
+</div>

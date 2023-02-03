@@ -44,9 +44,33 @@
         <div class="navbar-buttons mbr-section-btn"><a class="btn btn-primary display-7" routerLink="#" >Créer une annonce</a>
         </div>
       </li>
+      <li class="nav-item dropdown notification-ui show" [class.show]="isOpen">
+        <a class="nav-link dropdown-toggle notification-ui_icon" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="false" aria-expanded="true" (click)="toggleDropdown()">
+            <i class="bi bi-bell-fill"></i>
+            <span class="unread-notification"></span>
+        </a>
+         <div class="dropdown-menu notification-ui_dd show" aria-labelledby="navbarDropdown" *ngIf="isOpen">
+            <div class="notification-ui_dd-header">
+                <h3 class="text-center">Notification</h3>
+            </div>
+            <div class="notification-ui_dd-content"><!---->
+                <app-notification *ngFor="let notification of notifications" class="notification-list notification-list--unread" [notification] = "notification">
+                    
+                </app-notification>
+                
+             </div>
+            <div class="notification-ui_dd-footer">
+                <a href="#!" class="btn btn-success btn-block">View All</a>
+            </div>
+        </div>
+     </li>
     </ul>
 
 
+    <!--form class="d-flex" role="search">
+      <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+      <button class="btn btn-outline-success" type="submit">Search</button>
+    </form-->
     <a class="nav-link text-dark nav-link-hover " type="submit" routerLink="Favories" >
       <i class="fa fa-heart "></i>
     </a>

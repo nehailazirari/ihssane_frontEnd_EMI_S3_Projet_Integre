@@ -1,6 +1,6 @@
 import {Component, Input, OnInit, Output} from '@angular/core';
 
-import {User} from "../../model/user";
+import {User} from "../../model/User";
 import {LocalStorageService} from "../../service/local-storage.service";
 import {AuthService} from "../../service/auth.service";
 

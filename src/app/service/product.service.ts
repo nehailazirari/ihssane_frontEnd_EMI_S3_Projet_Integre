@@ -10,13 +10,20 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 })
 export class ProductService {
 
-  constructor(private http : HttpClient) { }
-
-  getProducts() : Observable<Don[]> {
-    return this.http.get<Don[]>('https://fakestoreapi.com/products');
-  }
+  
+    constructor(private http : HttpClient) { }
+    getProducts() : Observable<Don[]> {
+      return this.http.get<Don[]>('http://localhost:8080/Dons/All');
+    }
+    toggleFavorite(product: Don): Observable<Don> {
+      return this.http.patch<Don>('https://fakestoreapi.com/products' + product.id,
+      {
+      favorite: !product.favorite
+      });
+      }
+  
   getProductsById(id:number): Observable<Don>{
-    return this.http.get<Don>('https://fakestoreapi.com/products/'+id);
+    return this.http.get<Don>('http://localhost:8080/Dons/afficherUnDon/'+id);
   }
 
 }

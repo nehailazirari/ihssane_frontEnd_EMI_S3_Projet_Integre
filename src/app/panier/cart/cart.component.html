@@ -7,8 +7,8 @@
   <div class="container">
 
     <section id="cart"> 
-<app-cart-item *ngFor="let cartItem of cartItems$ | async"
-        [cartItem]="cartItem" (deleteItem)="OnDeleteItem($event)">
+<app-cart-item *ngFor="let cartItem of cartItems "
+        [cartItem]="cartItem" (deleteItem)="OnDeleteItem($event)" (addChat)="addConversion($event)">
     </app-cart-item>
     </section>
 

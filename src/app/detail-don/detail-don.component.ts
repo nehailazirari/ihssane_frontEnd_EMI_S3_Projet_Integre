@@ -2,7 +2,7 @@ import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {Don} from "../model/Don";
 import {ActivatedRoute, Router} from "@angular/router";
 import { ProductService } from '../service/product.service';
-import {User} from "../model/user";
+import {User} from "../model/User";
 import {AuthService} from "../service/auth.service";
 
 @Component({

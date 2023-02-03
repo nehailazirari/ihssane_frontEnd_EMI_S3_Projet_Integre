@@ -1,19 +1,19 @@
 <article class="product">
   <header>
     <a class="remove">
-      <img src="{{cartItem.image}}" alt=""/>
+      <img src="{{cartItem.don.photo}}" alt=""/>
 
       <h3 (click)="OnDeleteItem($event)"
           >Remove</h3>
     </a>
   </header>
 
-  <div class="content">
+  <div class="content"><!---->
 
-    <h1>{{cartItem.name}}</h1>
-    <h6 *ngIf="cartItem.etatDemande == accepted">
-    <img src="https://cdn.icon-icons.com/icons2/806/PNG/512/chat-21_icon-icons.com_65993.png" alt="sss" />
-    <h1>contacter le donneur</h1> </h6>
+    <h1>{{cartItem.don.nom}}</h1>
+    <h6 *ngIf="cartItem.etatDemande==accepted" >
+    <img src="https://freepngimg.com/thumb/chat/159738-photos-speech-chat-icon-free-hd-image.png" alt="sss"  />
+    <h1 (click)="addConversion($event)">contacter le donneur</h1> </h6>
   </div>
 
   <footer class="content">

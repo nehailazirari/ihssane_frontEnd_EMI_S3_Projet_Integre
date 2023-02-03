@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
-import {catchError, Observable, tap} from "rxjs";
+import { Observable} from "rxjs";
 import {Donation} from "../model/donation";
 import {AuthService} from "./auth.service";
 

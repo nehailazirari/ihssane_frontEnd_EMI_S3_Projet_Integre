@@ -1,51 +1,47 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { CartItem } from '../panier/cartItem';
+import { CartItem } from '../model/cartItem';
 import { Don } from '../model/Don';
 
 import { of as ObservableOf } from 'rxjs';
 import { EtatDemande } from '../shared/etatDemande';
+import { HttpClient } from '@angular/common/http';
+import { User } from 'app/model/User';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CartService {
-  public item : CartItem ;
 
+  url = "http://localhost:8080/api/panier/"
   cartItems : CartItem[] = [];
-  cartItem : CartItem  = new CartItem(0,'',0,0,'');
-  http: any;
-  constructor() {
-    this.item= new CartItem(1,"Fjallr",1,109.95,"https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg");
-    this.item.etatDemande = EtatDemande.accepted;
-    this.cartItems.push(this.item); }
-  getCartItem():Observable<CartItem[]> {
-      return ObservableOf(this.cartItems);
-  }
-  addToCart(product : Don){
-    this.cartItem = new CartItem(product.id,product.title,1,product.price,product.image);
+  cartItem! : CartItem;
+  
 
-    if(!this.InCart(this.cartItem.id)){this.cartItems.push(this.cartItem);
-    }
-  }
-  InCart(id : number): Boolean{
-    for(var i=0; i<this.cartItems.length; i++){
-      if(id === this.cartItems[i].id){
-        return true;
-      }
 
-    }
-    return false;
+  constructor(private http : HttpClient) { }
+  getCartItem(idpanier:number):Observable<CartItem[]> {
+      return this.http.get<CartItem[]>("http://localhost:8080/api/panier/"+idpanier);
   }
-  deleteFromCart(id : number){
-    let index :number=-1;
-    for(var i=0; i<this.cartItems.length; i++){
-      if(id === this.cartItems[i].id){
-        index = i;
-      }}
-    if (index > -1) {
-    this.cartItems.splice(index, 1);
-    }
+  addToCart(idDon : number,user : User):Observable<CartItem>{
+    
+    return this.http.post<CartItem>("http://localhost:8080/api/panier/Qu/"+idDon,user);
+  }
+  
+  deleteFromCart(idPanierBD : number,idUtilisateur:number) :Observable<CartItem>{
+
+   return this.http.delete<CartItem>(this.url+'deletePanierBD/'+idPanierBD+'/'+idUtilisateur)
+}
+  inCart(idDon :number ): Observable<Boolean>{
+    return this.http.get<Boolean>(this.url+'inCart/'+idDon)
+  }
+  updatePanierBD(idPanierBD: number, etatDemande: EtatDemande): Observable<CartItem>{
+    
+    return this.http.put<CartItem>(this.url+"updatePanierBD/"+idPanierBD+"/"+etatDemande,'')
+  }
+
+  getPanierBD(idDon : number): Observable<number>{
+    return this.http.get<number>(this.url+"getByIdDon/"+idDon)
   }
 }
 
