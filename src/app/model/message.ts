@@ -9,15 +9,17 @@ export class Message {
     public toUser: User;
     public createdDate : Date;
     public lastSeen: Date;
+    public photoProfil : string;
     constructor(id:number,
         message: string,
         fromUser: User,
-        toUser: User,createdDate : Date,lastSeen : Date){
+        toUser: User,createdDate : Date,lastSeen : Date,photoProfil:string){
             this.id=id;
             this.message=message;
             this.fromUser=fromUser;
             this.toUser = toUser;
             this.createdDate = createdDate;
             this.lastSeen = lastSeen;
+            this.photoProfil=photoProfil;
     }
 }

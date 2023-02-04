@@ -8,6 +8,7 @@ import { User } from '../../model/User';
 import { Message } from '../../model/message';
 import { MessageService } from '../../service/message-service.service';
 import { AuthService } from 'app/service/auth.service';
+import { TransitionCheckState } from '@angular/material/checkbox';
 
 
 @Component({
@@ -24,9 +25,12 @@ export class CartComponent implements OnInit {
   message!: Message;
   chine!: string;
   currentUser!: User;
+  pUser: [number,string] = [1,''];
+  @Output() public addphoto: EventEmitter<[number,string]>;
  
   constructor(private cartService : CartService,private route : Router,private messageService : MessageService,
     private authService: AuthService) {
+      this.addphoto = new EventEmitter();
     
    }
    
@@ -70,9 +74,10 @@ export class CartComponent implements OnInit {
     if(this.fromUser&&this.toUser){
       
       
-     this.message = new Message(5,"salut je veux ton don",this.fromUser,this.toUser,new Date(),new Date())
+     this.message = new Message(5,"salut je veux ton don",this.fromUser,this.toUser,new Date(),new Date(),cartItem.don.photo)
      if(this.message){
       this.messageService.sendMessage(this.message).subscribe((res)=>{
+      
       
       
       this.route.navigateByUrl('/', {skipLocationChange: true}).then(()=>

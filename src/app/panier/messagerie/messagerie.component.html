@@ -5,7 +5,7 @@
     </header>
     <ul>
       <li *ngFor="let user of users" (click)="onClik(user.id)">
-        <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/1940306/chat_avatar_02.jpg" alt="">
+        <img class="ggkk" src="{{photos.get(user.id.toString())}}" alt="">
         <div>
           <h2>{{user.nom+' '+user.prenom}}</h2>
           <h3>
@@ -18,7 +18,7 @@
   </aside>
   <main>
     <header *ngIf="heaserUser">
-      <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/1940306/chat_avatar_02.jpg"alt="">
+      <img class="ggkk" src="{{photos.get(heaserUser.id.toString())}}"alt="">
       <div >
         <h2>Chat with {{heaserUser.nom+' '+heaserUser.prenom}}</h2>
         <h3>already {{messages.length}} messages</h3>

@@ -1,9 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { MessageService } from '../../service/message-service.service';
 import { ActivatedRoute } from '@angular/router';
 import { User } from '../../model/User';
 import { Message } from '../../model/message';
+import { SafeResourceUrl } from '@angular/platform-browser';
+import { AuthService } from 'app/service/auth.service';
+
+
+
 
 
 @Component({
@@ -25,8 +30,14 @@ export class MessagerieComponent implements OnInit {
   chine :string ="";
   message!:Message;
   heaserUser!:User;
+  photos: Map<string,string> =new Map<string, string>();
+  result:any;
+  currentUser!: User;
+   nameAgeMapping = new Map<string, any>();;
 
-  constructor(private messageService: MessageService, private route: ActivatedRoute) {}
+  
+
+  constructor(private messageService: MessageService, private authService: AuthService) {}
 
 
   ngOnInit(): void {
@@ -34,8 +45,15 @@ export class MessagerieComponent implements OnInit {
       this.id = params['UserId'];
       
     });*/
-    this.messageService.getUtilisateurs(1).subscribe((response:any) => {
+    
+    
+    
+
+    this.currentUser = this.authService.ConnectedUser();
+
+    if(this.currentUser)this.messageService.getUtilisateurs(this.currentUser.id).subscribe((response:any) => {
       this.users1= response;
+
       if(this.users1 && this.users1.length > 0){
       for(let user1 of this.users1){
         for(let user of this.users){
@@ -49,9 +67,20 @@ export class MessagerieComponent implements OnInit {
       }this.inclode=false;
     } 
      }
+
+    this.messageService.getAllPhoto().subscribe((res)=>{
+      
+
+      
+
+      this.photos = new Map(Object.entries(res));
+      console.log(this.photos.get("2"));
+    })
+
     },(err='yy') => {
       console.log(err);
-    });
+    }
+    );
     
 
    
@@ -62,6 +91,8 @@ export class MessagerieComponent implements OnInit {
     this.messageService.getMessages(this.id,id).subscribe((reponse:any)=>{
 
       this.messages=reponse;
+      console.log(this.messages);
+      
     })
     for(let user of this.users){
       if(user.id==this.autherId){
@@ -82,7 +113,7 @@ export class MessagerieComponent implements OnInit {
     
   })
   if(this.fromUser&&this.toUser){
-   this.message = new Message(5,this.chine,this.fromUser,this.toUser,new Date(),new Date())
+   this.message = new Message(5,this.chine,this.fromUser,this.toUser,new Date(),new Date(),"https://s3-us-west-2.amazonaws.com/s.cdpn.io/1940306/chat_avatar_02.jpg")
    this.chine=''
    if(this.message){
     this.messageService.sendMessage(this.message).subscribe((res)=>{
@@ -96,5 +127,6 @@ export class MessagerieComponent implements OnInit {
 
   }
 
+  
 
 }

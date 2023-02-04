@@ -32,5 +32,15 @@ export class MessageService {
     
     return this.http.get<User>("http://localhost:8080/messages/users/"+id)
   }
+
+  getAllPhoto(): Observable<Map<number,string>>{
+
+    let rs=this.http.get<Map<number,string>>("http://localhost:8080/messages/getPhoto");
+    
+    
+    return rs
+  }
+
+
 }
 
