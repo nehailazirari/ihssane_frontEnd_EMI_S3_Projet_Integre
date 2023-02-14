@@ -24,6 +24,7 @@ export class EditDonationComponent {
   form: any;
   up: any;
    categ: any;
+   selected=false;
   constructor(@Inject(MAT_DIALOG_DATA) public data: any,private categoryService:CategoryService,public dialogRef: MatDialogRef<EditProductDialog>,private  donationService:ListDonationsService,private router:Router, private activeRoute:ActivatedRoute,private fb:FormBuilder,public dialog: MatDialogRef<EditDonationComponent>,private http:HttpClient) {
 
     this.tasksFilter = this.data.product;
@@ -40,6 +41,7 @@ export class EditDonationComponent {
     //console.log("this.data.description "+this.data.description)
 
     this.createform(this.data);
+
     //console.log("this.tasksFilter "+this.tasksFilter);
 
     this.categoryService.getCategory().subscribe((res:any)=>{
@@ -125,7 +127,11 @@ export class EditDonationComponent {
     //console.log("Model avant "+model.nom)
     model.nom=this.tasksFilter.controls['title'].value;
     model.description=this.tasksFilter.controls['description'].value
+    if(this.selected){
     model.category=this.categ
+    }
+    
+    
     //model.photo=this.tasksFilter.controls['image'].value;
 
    /* model.donneur={
@@ -160,6 +166,15 @@ export class EditDonationComponent {
 
     })
     console.log(event.target.value)
+
+  }
+
+  filterCategorie(int:number) {
+    this.categoryService.getCategorieById(int).subscribe(res=>{
+      this.categ=res;
+
+    })
+    
 
   }
 }

@@ -32,6 +32,7 @@ import {ProductListComponent} from "./catalogue/product-list/product-list.compon
 import {CartComponent} from "./panier/cart/cart.component";
 import {AuthentificationGuard} from "./authentification.guard";
 import { NotificationComponent } from './catalogue/notification/NotifyCompenent/notification.component';
+import { FooterComponent } from './footer/footer.component';
 
 export const DIALOG_DATA = new InjectionToken<any>('DialogData');
 @NgModule({
@@ -54,7 +55,8 @@ export const DIALOG_DATA = new InjectionToken<any>('DialogData');
     DonationsComponent,
     EditDonationComponent,
     NewDonationComponent,
-    NotificationComponent
+    NotificationComponent,
+    FooterComponent
   ],
     imports: [
         BrowserModule,

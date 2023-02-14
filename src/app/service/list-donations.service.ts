@@ -14,9 +14,18 @@ export class ListDonationsService {
 
   value:any
   edit:boolean=false;
-  constructor(private http:HttpClient,private auth :AuthService) { }
+  id: number | undefined;
+  constructor(private http:HttpClient,private auth :AuthService) {
 
-  id:number=this.auth.ConnectedUser().id
+    let user = this.auth.ConnectedUser();
+    if (user) {
+      this.id = user.id;
+    } else {
+      console.error("Connected user is null or undefined, cannot access its id property");
+    }
+    console.log("idddd "+this.id);
+
+  }
   getAllDonations(){
     //return this.http.get('https://dummyjson.com/products' );
     console.log("iddddd "+this.id);
@@ -73,6 +82,7 @@ export class ListDonationsService {
   }
 
   public editProduct(id:number,value:any) {
+    console.log("eeeeddddiiiitttteee")
     return this.http.put(this.host+`/update/${id}`, value)
   }
 

@@ -18,7 +18,7 @@ export class CartItemComponent implements OnInit {
   @Input() cartItem!: CartItem;
   @Output() public addChat : EventEmitter<CartItem> = new EventEmitter();
   @Output() public deleteItem : EventEmitter<number> = new EventEmitter();
-  public accepted : EtatDemande =EtatDemande.accepter;
+  public accepted : EtatDemande =EtatDemande.accepté;
   fromUser!: User;
   toUser!: User;
   message!: Message;

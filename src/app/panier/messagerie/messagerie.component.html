@@ -1,5 +1,5 @@
-<div id="container"  >
-  <aside>
+<div id="container" *ngIf="users.length>0"  >
+  <aside >
     <header>
       <input type="text" placeholder="search">
     </header>
@@ -18,7 +18,7 @@
   </aside>
   <main>
     <header *ngIf="heaserUser">
-      <img class="ggkk" src="{{photos.get(heaserUser.id.toString())}}"alt="">
+      <img class="gg" src="{{photos.get(heaserUser.id.toString())}}"alt="">
       <div >
         <h2>Chat with {{heaserUser.nom+' '+heaserUser.prenom}}</h2>
         <h3>already {{messages.length}} messages</h3>

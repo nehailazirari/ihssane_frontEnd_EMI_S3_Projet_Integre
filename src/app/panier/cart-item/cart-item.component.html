@@ -19,7 +19,11 @@
   <footer class="content">
     <span class="qt">Etat de demande</span>
 
-    <h2 class="full-price">
+    <h2 class="full-price" [ngClass]="{
+      'accepted': cartItem.etatDemande === 'accepté',
+      'rejected': cartItem.etatDemande === 'refusé',
+      'pending': cartItem.etatDemande === 'encours'
+    }">
       {{cartItem.etatDemande}}
     </h2>
 

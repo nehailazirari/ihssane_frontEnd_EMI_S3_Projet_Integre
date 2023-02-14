@@ -230,9 +230,20 @@ body {
     margin: 0;
     padding: 0 30px;
   }
+  .accepted {
+    background-color: #53b5aa;
+  }
+  
+  .rejected {
+    background-color: rgb(232, 91, 91);
+  }
+  
+  .pending {
+    background-color: rgb(91, 192, 232);
+  }
   
   .product footer .full-price {
-    background: #53b5aa;
+    
     color: #fff;
     float: right;
     font-size: 22px;

@@ -51,7 +51,7 @@ export class DetailDonComponent implements OnInit {
       //Similaire
       this.productService.getProducts().subscribe((data: any)=> {
           for (let d of data) {
-            if(this.dondetail.category==d.category){
+            if(this.dondetail.category.designation==d.category.designation){
               this.produitSimiliaire.push(d);
             }
 

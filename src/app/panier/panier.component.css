@@ -1,6 +1,6 @@
 .her {
     background: #eee;
-    min-height: 100vh;
+    min-height: 130vh;
     overflow-x: hidden;
     display: flex;
     justify-content: space-between;
@@ -20,4 +20,5 @@
     width: 50%;
     height: 100px;
     top: 100px;left: 40px;
+    
 }

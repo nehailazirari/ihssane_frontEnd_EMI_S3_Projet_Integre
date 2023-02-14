@@ -168,15 +168,29 @@ body {
 
 
     button {
-        width: 70px;
+        width: 130px;
         height: 30px;
         margin: 5px;
       }
       
-      button:first-of-type {
-        background-color: red;
+      .bleu {
+        border: 0;
+        color: white;
+        background: #1E90FF;
+
+        filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#0b69ff",endColorstr="#00c4ff",GradientType=1);
+        padding: 4px 10px;
+        border-radius: 25px;
+       box-shadow: 0 4px 6px rgb(50 50 93 / 11%), 0 1px 3px rgb(0 0 0 / 8%);
+        transition: all .15s ease;
       }
       
-      button:last-of-type {
-        background-color: green;
+      .green {
+        border: 0;
+        background-color: #34d261;
+        filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#0b69ff",endColorstr="#00c4ff",GradientType=1);
+        padding: 4px 10px;
+        border-radius: 25px;
+       box-shadow: 0 4px 6px rgb(50 50 93 / 11%), 0 1px 3px rgb(0 0 0 / 8%);
+        transition: all .15s ease;
       }

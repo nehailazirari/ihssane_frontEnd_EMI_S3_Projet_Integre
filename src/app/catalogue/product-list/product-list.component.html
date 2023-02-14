@@ -1,10 +1,41 @@
 
-<i class="bi bi-heart"></i>
+<main class="container">
+  <aside>
+    <div class="sort">
+      <label >Filtrer par:</label>
 
-<div class="row">
+      
+      <select  name="sortby" >
+        <option disabled hidden selected>Catégorie</option>
+        <option  *ngFor="let cat of categories" name="categorie" >{{cat}} </option>
+      </select><br>
+      <select  name="sortby" >
+        <option disabled hidden selected>Ville</option>
+        <option  *ngFor="let vi of villes" name="categorie" >{{vi}} </option>
+      </select>
+      <br>
+      <div class="filter--desktop-btn">
+        <button class="filter--apply-btn" (click)="filter()">entrer</button>
+        
+      </div>
 
-        <app-product-item *ngFor="let product of products$ | async"
-        [product]="product"
-        (addToCart)="addToCart($event)">
-    </app-product-item>
-</div>
+
+    </div>
+
+  </aside>
+  <section id="catalog">
+    <h2 >  Catalogue de dons  </h2>
+    <br><br>
+    <!--<div class="catalog">-->
+    <div class="row row-cols-1 row-cols-md-3 g-4" id="catalogue" *ngIf="elem">
+
+      <app-product-item *ngFor="let product of products$ | async"
+                        [product]="product"
+                        (addToCart)="addToCart($event)">
+
+      </app-product-item> </div>
+      <div *ngIf="! elem">
+      <app-product-item  *ngFor="let don of don_filtre" [product]="don" ></app-product-item></div>
+   
+  </section>
+</main>

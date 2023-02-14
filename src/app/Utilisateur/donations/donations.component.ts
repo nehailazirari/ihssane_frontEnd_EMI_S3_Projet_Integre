@@ -48,6 +48,8 @@ export class DonationsComponent {
     this.categoryService.getCategory().subscribe((res:any)=>{
 
         this.category=res;
+        console.log(this.category);
+        
         },
       error =>{
         alert(error.message)
@@ -105,7 +107,8 @@ export class DonationsComponent {
 
     this.donationService.deleteProduct(id).subscribe(res=>console.log("success"));
     console.log("hhhhhhhhh")
-    return this.getProducts();
+    return this.router.navigateByUrl('/', {skipLocationChange: true}).then(()=>
+    this.router.navigate(['/donations']));
     console.log("tttttt")
     /*this.donationService.getAllDonations().subscribe((res:any)=>{
       this.products=res;
@@ -174,9 +177,8 @@ export class DonationsComponent {
 
 
   chercher() {
-    this.donationService.getbyKey(this.word)
-      .subscribe((val:any)=>{
-        //console.log()
+    this.donationService.getbyKey(this.word).subscribe((val:any)=>{
+        console.log(this.word);
           this.products = val
 
 

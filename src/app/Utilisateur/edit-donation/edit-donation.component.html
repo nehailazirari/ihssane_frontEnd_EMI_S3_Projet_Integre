@@ -55,8 +55,8 @@
         <mat-form-field  fieldappearance = "fill" >
         <mat-label > Categorie </mat-label >
 
-      <select  matNativeControl  requis   (change)="filterCategory($event)"  formControlName="category">
-<!--        <option  value = "volvo" > Volvo </option >-->
+      <select  matNativeControl  requis   (change)="filterCategory($event)"  formControlName="category" (click)="selected=true">
+      <!--option  value = "volvo" > Volvo </option --->
           <option value="{{option.designation}}" *ngFor="let option of category" value="{{option.id}}" >{{option.designation}}</option>
 
        </select >

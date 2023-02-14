@@ -38,10 +38,10 @@
 
 
       <li class="nav-item active">
-        <a class="nav-link " routerLink="/panier">Panier</a>
+        <a class="nav-link " routerLink="/panier" >Panier</a>
       </li>
       <li>
-        <div class="navbar-buttons mbr-section-btn"><a class="btn btn-primary display-7" routerLink="#" >Créer une annonce</a>
+        <div class="navbar-buttons mbr-section-btn"><a class="btn btn-primary display-7" (click)="addDonation()" >Créer une annonce</a>
         </div>
       </li>
       <li class="nav-item dropdown notification-ui show" [class.show]="isOpen">
@@ -81,8 +81,10 @@
       <i class="fa fa-user"></i><span >Profil</span></a>
 
 
-    <button (click)="logout()" *ngIf="isConnected" >Se deconnecter</button>
-    <button (click)="logout()" *ngIf="!isConnected" >Se connecter</button>
+      
+        
+    <button class="green" (click)="logout()" *ngIf="isConnected" >Se deconnecter</button>
+    <button class="bleu" (click)="logout()" *ngIf="!isConnected" >Se connecter</button>
 
 
 

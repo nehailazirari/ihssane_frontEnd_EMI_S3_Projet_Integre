@@ -121,15 +121,29 @@ body {
 
 
     button {
-        width: 70px;
+        width: 80px;
         height: 30px;
         margin: 5px;
       }
       
       button:first-of-type {
-        background-color: red;
+            border: 0;
+            background-color: rgb(255, 64, 64);
+            filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#0b69ff",endColorstr="#00c4ff",GradientType=1);
+            padding: 4px 10px;
+            border-radius: 25px;
+           box-shadow: 0 4px 6px rgb(50 50 93 / 11%), 0 1px 3px rgb(0 0 0 / 8%);
+            transition: all .15s ease;
       }
       
       button:last-of-type {
-        background-color: green;
+        
+            border: 0;
+            background-color: #34d261;
+            filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#0b69ff",endColorstr="#00c4ff",GradientType=1);
+            padding: 4px 10px;
+            border-radius: 25px;
+           box-shadow: 0 4px 6px rgb(50 50 93 / 11%), 0 1px 3px rgb(0 0 0 / 8%);
+            transition: all .15s ease;
+        
       }

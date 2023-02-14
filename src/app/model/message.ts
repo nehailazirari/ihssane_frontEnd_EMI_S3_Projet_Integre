@@ -9,11 +9,11 @@ export class Message {
     public toUser: User;
     public createdDate : Date;
     public lastSeen: Date;
-    public photoProfil : string;
+    public photoProfil : string|undefined;
     constructor(id:number,
         message: string,
         fromUser: User,
-        toUser: User,createdDate : Date,lastSeen : Date,photoProfil:string){
+        toUser: User,createdDate : Date,lastSeen : Date,photoProfil:string|undefined){
             this.id=id;
             this.message=message;
             this.fromUser=fromUser;

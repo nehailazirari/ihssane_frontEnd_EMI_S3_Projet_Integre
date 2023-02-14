@@ -24,7 +24,7 @@ export class NotificationComponent implements OnInit {
   
   updatePanierDbAccepter(){
     this.isDisabled=!this.isDisabled;
-    this.panierService.updatePanierBD(this.notification.panierBD.id,EtatDemande.accepter).subscribe((res)=>{
+    this.panierService.updatePanierBD(this.notification.panierBD.id,EtatDemande.accepté).subscribe((res)=>{
 
     })
   }
@@ -32,7 +32,7 @@ export class NotificationComponent implements OnInit {
     
     console.log();
     
-    this.panierService.updatePanierBD(this.notification.panierBD.id,EtatDemande.refuser).subscribe((res)=>{
+    this.panierService.updatePanierBD(this.notification.panierBD.id,EtatDemande.refusé).subscribe((res)=>{
       this.route.navigateByUrl('/', {skipLocationChange: true}).then(()=>
         this.route.navigate(['/panier']));
       this.isDisabled=!this.isDisabled;

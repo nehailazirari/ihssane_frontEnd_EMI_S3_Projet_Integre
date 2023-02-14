@@ -28,6 +28,6 @@ export class CategoryService {
   }
 
   getCategorieById(id:number){
-    return this.http.get(this.host+"/categories/"+id);
+    return this.http.get(this.host+"/categorie/"+id);
   }
 }

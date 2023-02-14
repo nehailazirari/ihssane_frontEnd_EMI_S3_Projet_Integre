@@ -29,8 +29,7 @@ export class NewDonationComponent {
     //this.service.createDonation()
     //this.service.deleteProduct(1)
     this.categoryService.getCategory().subscribe((res:any)=>{
-
-        this.category=res;
+      this.category=res;
         this.category.forEach((p:any)=>{console.log(p.designation)})
       },
       error =>{
@@ -94,7 +93,7 @@ export class NewDonationComponent {
 
     this.model.description=this.tasksFilter.controls['description'].value;
     this.model.nom=this.tasksFilter.controls['title'].value;
-    this.model.category=this.categ
+    this.model.category=this.categ;
     this.model.photo=this.tasksFilter.controls['image'].value;
     //this.model.category=this.tasksFilter.controls['category'].value;
     this.model.donneur=this.auth.ConnectedUser();
@@ -109,8 +108,10 @@ export class NewDonationComponent {
         "telephone": "0654345654"
     }*/
     //this.model.nom="ddddd"
-    console.log("MODEL "+this.model.photo);
+    console.log("MODEL "+this.model.description+' '+this.model.category.designation);
     this.service.createDonation(this.model).subscribe(response => {
+      this.router.navigateByUrl('/', {skipLocationChange: true}).then(()=>
+      this.router.navigate(['/donations']));
       console.log('Donation added successfully');
     }, error => {
       console.log('Error adding donation: ' + error);

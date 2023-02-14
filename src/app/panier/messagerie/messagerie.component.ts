@@ -50,6 +50,7 @@ export class MessagerieComponent implements OnInit {
     
 
     this.currentUser = this.authService.ConnectedUser();
+    this.id=this.authService.ConnectedUser().id;
 
     if(this.currentUser)this.messageService.getUtilisateurs(this.currentUser.id).subscribe((response:any) => {
       this.users1= response;
@@ -74,7 +75,7 @@ export class MessagerieComponent implements OnInit {
       
 
       this.photos = new Map(Object.entries(res));
-      console.log(this.photos.get("2"));
+      console.log(this.photos);
     })
 
     },(err='yy') => {
@@ -112,8 +113,8 @@ export class MessagerieComponent implements OnInit {
     this.toUser=reponse;
     
   })
-  if(this.fromUser&&this.toUser){
-   this.message = new Message(5,this.chine,this.fromUser,this.toUser,new Date(),new Date(),"https://s3-us-west-2.amazonaws.com/s.cdpn.io/1940306/chat_avatar_02.jpg")
+  if(this.fromUser&&this.toUser&& this.photos){
+   this.message = new Message(5,this.chine,this.fromUser,this.toUser,new Date(),new Date(),this.photos.get(this.toUser.id.toString()))
    this.chine=''
    if(this.message){
     this.messageService.sendMessage(this.message).subscribe((res)=>{
